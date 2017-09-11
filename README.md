@@ -39,7 +39,7 @@ create table public.category_stage_internal (
 ```
 
 ```
-psql -Ustage -p5439 -hdataproviders.XXXXXXXXXXXXXXX.us-east-2.redshift.amazonaws.com < category_stage_internal.sql
+psql -UUSERNAMEDB -p5439 -hdataproviders.XXXXXXXXXXXXXXX.us-east-2.redshift.amazonaws.com < category_stage_internal.sql
 ```
 
 - Validate data in redshift table
