@@ -27,6 +27,24 @@ region 'us-west-2'
 iam_role 'arn:aws:iam::1111111111111111:role/IAMREDSHIFT'
 create external database if not exists;
 ```
+- Validate if the external schema was created
+```
+stage=> \x
+Expanded display is on.
+
+stage=> select * from svv_external_tables;
+-[ RECORD 1 ]-----+-----------------------------------------------------------
+schemaname        | stage
+tablename         | category_stage_external
+location          | s3://MYBUCKETREDSHIFT/stage
+input_format      | org.apache.hadoop.mapred.TextInputFormat
+output_format     | org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat
+serialization_lib | org.apache.hadoop.hive.serde2.lazy.LazySimpleSerDe
+serde_parameters  | {"field.delim":",","serialization.format":","}
+compressed        | 0
+parameters        | {"EXTERNAL":"TRUE","transient_lastDdlTime":"XXXXXXXXXXXX"}
+```
+
 - Creating a table in redshift and inserting data
 ```
 create table public.category_stage_internal (
