@@ -20,9 +20,9 @@ s3://MYBUCKETREDSHIFT
 
 - Creating external schema spectrum
 ```
-create external schema if not exists TABLE_NAME
+create external schema if not exists stage
 from data catalog
-database 'TABLE_NAME'
+database 'stage'
 region 'us-west-2'
 iam_role 'arn:aws:iam::1111111111111111:role/IAMREDSHIFT'
 create external database if not exists;
