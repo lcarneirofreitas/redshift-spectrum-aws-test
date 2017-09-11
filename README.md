@@ -84,7 +84,7 @@ compressed        | 0
 parameters        | {"EXTERNAL":"TRUE","transient_lastDdlTime":"XXXXXXXXXXXX"}
 ```
 
-- Loading data from redshift to the s3 spectrum
+- Loading data from redshift to the s3 spectrum with the UNLOAD command
 ```
 unload  ('select * from category_stage_internal order by id')
 to 's3://MYBUCKETREDSHIFT/stage/'
@@ -145,7 +145,7 @@ stage=> select count(*) from public.category_stage_internal;
 (1 row)
 ```
 
-- Now let's retrieve all data from the redshift table with the data from the s3 spectrum table
+- Now let's retrieve all data from the redshift table with the data from the s3 spectrum table with the COPY command
 ```
 stage=> copy category_stage_internal
 stage-> from 's3://MYBUCKETREDSHIFT/stage/manifest'
