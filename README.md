@@ -27,4 +27,17 @@ region 'us-west-2'
 iam_role 'arn:aws:iam::1111111111111111:role/IAMREDSHIFT'
 create external database if not exists;
 ```
+- Creating a table in redshift and inserting data
+
+```
+create table public.category_stage_internal (
+        id smallint default 0,
+        first_name varchar(50) default 'General',
+        last_name varchar(50) default 'General',
+        email varchar(50) default 'General',
+        gender varchar(50) default 'General',
+        ip_address varchar(20) default 'General');
+	
+psql -Ustage -p5439 -hdataproviders.XXXXXXXXXXXXXXX.us-east-2.redshift.amazonaws.com < category_stage_internal.sql
+```
 
